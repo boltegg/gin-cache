@@ -11,8 +11,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/gin-contrib/cache/persistence"
 	"github.com/gin-gonic/gin"
+
+	"github.com/boltegg/gin-cache/persistence"
 )
 
 const (
@@ -236,6 +237,35 @@ func CachePageWithoutHeader(store persistence.CacheStore, expire time.Duration, 
 			}
 		} else {
 			c.Writer.WriteHeader(cache.Status)
+			_, _ = c.Writer.Write(cache.Data)
+		}
+	}
+}
+
+func CachePageWithKey(store persistence.CacheStore, keyFunc func(c *gin.Context) string, expire time.Duration, handle gin.HandlerFunc) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		var cache responseCache
+		key := keyFunc(c)
+		if err := store.Get(key, &cache); err != nil {
+			if err != persistence.ErrCacheMiss {
+				log.Println(err.Error())
+			}
+			// replace writer
+			writer := newCachedWriter(store, expire, c.Writer, key)
+			c.Writer = writer
+			handle(c)
+
+			// Drop caches of aborted contexts
+			if c.IsAborted() {
+				_ = store.Delete(key)
+			}
+		} else {
+			c.Writer.WriteHeader(cache.Status)
+			for k, vals := range cache.Header {
+				for _, v := range vals {
+					c.Writer.Header().Set(k, v)
+				}
+			}
 			_, _ = c.Writer.Write(cache.Data)
 		}
 	}

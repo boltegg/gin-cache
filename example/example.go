@@ -4,8 +4,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/gin-contrib/cache"
-	"github.com/gin-contrib/cache/persistence"
+	"github.com/boltegg/gin-cache/persistence"
 	"github.com/gin-gonic/gin"
 )
 

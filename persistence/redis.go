@@ -3,8 +3,9 @@ package persistence
 import (
 	"time"
 
-	"github.com/gin-contrib/cache/utils"
 	"github.com/gomodule/redigo/redis"
+
+	"github.com/boltegg/gin-cache/utils"
 )
 
 // RedisStore represents the cache with redis persistence

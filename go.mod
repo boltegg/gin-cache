@@ -1,4 +1,4 @@
-module github.com/gin-contrib/cache
+module github.com/boltegg/gin-cache
 
 go 1.20
 

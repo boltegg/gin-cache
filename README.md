@@ -1,9 +1,9 @@
 # Cache gin's middleware
 
-[![Build Status](https://github.com/gin-contrib/cache/actions/workflows/testing.yml/badge.svg)](https://github.com/gin-contrib/cache/actions/workflows/testing.yml)
+[![Build Status](https://github.com/boltegg/gin-cache/actions/workflows/testing.yml/badge.svg)](https://github.com/gin-contrib/cache/actions/workflows/testing.yml)
 [![codecov](https://codecov.io/gh/gin-contrib/cache/branch/master/graph/badge.svg)](https://codecov.io/gh/gin-contrib/cache)
-[![Go Report Card](https://goreportcard.com/badge/github.com/gin-contrib/cache)](https://goreportcard.com/report/github.com/gin-contrib/cache)
-[![GoDoc](https://godoc.org/github.com/gin-contrib/cache?status.svg)](https://godoc.org/github.com/gin-contrib/cache)
+[![Go Report Card](https://goreportcard.com/badge/github.com/boltegg/gin-cache)](https://goreportcard.com/report/github.com/gin-contrib/cache)
+[![GoDoc](https://godoc.org/github.com/boltegg/gin-cache?status.svg)](https://godoc.org/github.com/gin-contrib/cache)
 
 Gin middleware/handler to enable Cache.
 
@@ -14,13 +14,13 @@ Gin middleware/handler to enable Cache.
 Download and install it:
 
 ```sh
-$ go get github.com/gin-contrib/cache
+$ go get github.com/boltegg/gin-cache
 ```
 
 Import it in your code:
 
 ```go
-import "github.com/gin-contrib/cache"
+import "github.com/boltegg/gin-cache"
 ```
 
 ### Canonical example:
@@ -34,8 +34,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/gin-contrib/cache"
-	"github.com/gin-contrib/cache/persistence"
+	"github.com/boltegg/gin-cache"
+	"github.com/boltegg/gin-cache/persistence"
 	"github.com/gin-gonic/gin"
 )
 
